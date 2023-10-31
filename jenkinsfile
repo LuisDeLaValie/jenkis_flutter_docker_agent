@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+        docker {
+            image 'ghcr.io/cirruslabs/flutter:3.13.0'
+        }
+    }
+    stages {
+        stage('test') {
+            steps {
+                sh 'flutter test'
+            }
+        }
+    }
+}
