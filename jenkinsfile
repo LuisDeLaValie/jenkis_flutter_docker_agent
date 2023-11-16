@@ -1,65 +1,48 @@
+
 pipeline {
     agent {
         docker {
             image 'ghcr.io/cirruslabs/flutter:3.13.0'
+            // Opcional: También puedes especificar otros detalles como etiquetas, argumentos, etc.
+            // args '-v /ruta/local:/ruta/contenedor' // Mapeo de volúmenes
         }
     }
+
     stages {
-        stage('test') {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                sh 'flutter pub get'
+            }
+        }
+
+        stage('Run tests') {
             steps {
                 sh 'flutter test'
             }
         }
+
+        stage('Build APK') {
+            steps {
+                sh 'flutter build apk'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Acciones que se ejecutarán siempre
+        }
+        success {
+            // Acciones si la construcción y las pruebas tienen éxito
+        }
+        failure {
+            // Acciones si la construcción o pruebas fallan
+        }
     }
 }
-
-
-
-// pipeline {
-//     agent any
-
-//     stages {
-//         stage('Checkout') {
-//             steps {
-//                 // Checkout del repositorio de código
-//                 checkout scm
-//             }
-//         }
-
-//         stage('Install dependencies') {
-//             steps {
-//                 // Instalar las dependencias de Flutter
-//                 sh 'flutter pub get'
-//             }
-//         }
-
-//         stage('Run tests') {
-//             steps {
-//                 // Ejecutar pruebas de Flutter
-//                 sh 'flutter test'
-//             }
-//         }
-
-//         stage('Build APK') {
-//             steps {
-//                 // Construir la APK de Flutter
-//                 sh 'flutter build apk'
-//                 // Puedes añadir comandos adicionales aquí para manejar la salida del build
-//             }
-//         }
-
-//         // Agrega más etapas según sea necesario para despliegue, análisis estático, etc.
-//     }
-
-//     post {
-//         always {
-//             // Algunas acciones que se ejecutarán siempre, como limpiar o notificar
-//         }
-//         success {
-//             // Acciones adicionales si la construcción y las pruebas tienen éxito
-//         }
-//         failure {
-//             // Acciones si la construcción o pruebas fallan
-//         }
-//     }
-// }
