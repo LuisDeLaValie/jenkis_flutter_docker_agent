@@ -14,8 +14,8 @@ pipeline {
         stage('Setup') {
             steps {
                 sh 'pwd'
-                sh 'li'
-                sh 'docker run -v /ruta/local:/ruta/contenedor ghcr.io/cirruslabs/flutter:3.13.0 -it'
+                sh 'ls'
+                sh 'docker run -v /home/jenkins/workspace/prueba:. ghcr.io/cirruslabs/flutter:3.13.0 -it'
             }
         }
         stage('Checkout') {
