@@ -8,7 +8,7 @@ pipeline {
     //         // args '-v /ruta/local:/ruta/contenedor' // Mapeo de volúmenes
     //     }
     // }
-    agent 'kj'
+    agent kj
 
     stages {
         // stage('Setup') {
