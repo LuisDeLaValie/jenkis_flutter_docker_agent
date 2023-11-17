@@ -1,14 +1,14 @@
 
 pipeline {
 
-    agent {
-        docker {
-            image 'ghcr.io/cirruslabs/flutter:3.13.0'
-            // Opcional: También puedes especificar otros detalles como etiquetas, argumentos, etc.
-            // args '-v /ruta/local:/ruta/contenedor' // Mapeo de volúmenes
-        }
-    }
-    // agent 'agent-docker'
+    // agent {
+    //     docker {
+    //         image 'ghcr.io/cirruslabs/flutter:3.13.0'
+    //         // Opcional: También puedes especificar otros detalles como etiquetas, argumentos, etc.
+    //         // args '-v /ruta/local:/ruta/contenedor' // Mapeo de volúmenes
+    //     }
+    // }
+    agent 'kj'
 
     stages {
         // stage('Setup') {
