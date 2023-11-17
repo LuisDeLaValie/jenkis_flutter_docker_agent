@@ -21,6 +21,7 @@ agent {
 
         stage('Install dependencies') {
             steps {
+                sh 'ls -a'
                 sh 'flutter pub get'
             }
         }
