@@ -30,5 +30,4 @@ void main() {
 
 
   test("test1", () => expect(2+2,4) );
-  test("test1", () => expect(2+2,5) );
 }
